@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
   @override
@@ -31,6 +33,12 @@ class _GameScreenState extends State<GameScreen> {
     super.initState();
     game = FruitCatcherGame();
   }
+
+  @override
+void dispose() {
+game.onRemove();
+super.dispose();
+}
 
   final ValueNotifier<int> counter = ValueNotifier(0);
   @override
