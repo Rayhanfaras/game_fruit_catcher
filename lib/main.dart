@@ -4,30 +4,30 @@ import 'package:game_fruit_catcher/game/fruit_catcher_game.dart';
 import 'package:game_fruit_catcher/game/managers/audio_manager.dart';
 
 void main() async {
-WidgetsFlutterBinding.ensureInitialized();
-// Initialize audio
-await AudioManager().initialize();
-runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize audio
+  await AudioManager().initialize();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Fruit Catcher Game', home: const GameScreen());
+    return MaterialApp(title: 'Fruit Game', home: const GameScreen());
   }
 }
 
-
-
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
+
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
 
 class _GameScreenState extends State<GameScreen> {
   late FruitCatcherGame game;
+
   @override
   void initState() {
     super.initState();
@@ -35,18 +35,17 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   @override
-void dispose() {
-game.onRemove();
-super.dispose();
-}
+  void dispose() {
+    game.onRemove();
+    super.dispose();
+  }
 
-  final ValueNotifier<int> counter = ValueNotifier(0);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          GameWidget(game: game), 
+          GameWidget(game: game),
           Positioned(
             top: 50,
             left: 20,
@@ -56,8 +55,9 @@ super.dispose();
                 color: Colors.black54,
                 borderRadius: BorderRadius.circular(10),
               ),
+
               child: ValueListenableBuilder<int>(
-                valueListenable: counter,
+                valueListenable: game.scoreNotifier,
                 builder: (context, score, child) {
                   return Text(
                     'Score: $score',
@@ -71,6 +71,7 @@ super.dispose();
               ),
             ),
           ),
+
           Positioned(
             top: 50,
             right: 20,

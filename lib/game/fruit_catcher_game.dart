@@ -13,4 +13,6 @@ await super.onLoad();
 // Play background music
 AudioManager().playBackgroundMusic();  // Update 
 }
+
+  void incrementScore() {}
 }
