@@ -1,6 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:game_fruit_catcher/game/game/fruit_catcher_game.dart';
+import 'package:game_fruit_catcher/game/fruit_catcher_game.dart';
 
 void main() {
   runApp(const MyApp());
