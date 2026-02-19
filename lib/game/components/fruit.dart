@@ -3,7 +3,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import '../fruit_catcher_game.dart';
-import 'basket.dart';
+//import 'basket.dart';
 
 enum FruitType { apple, banana, orange, strawberry }
 
